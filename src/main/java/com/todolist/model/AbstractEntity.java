@@ -1,6 +1,7 @@
 package com.todolist.model;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.Objects;
@@ -11,6 +12,7 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue
     private int id;
+
 
     public int getId() {
         return id;
