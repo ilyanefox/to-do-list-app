@@ -1,5 +1,7 @@
 package com.todolist.model;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.util.ArrayList;
@@ -11,8 +13,8 @@ public class User extends AbstractEntity{
     private String username;
     private String firstName;
     private String email;
-    private String password;
-
+    private String pwHash;
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 //    @ManyToOne
 //    private List<String> categories = new ArrayList<String>();
 
@@ -23,7 +25,15 @@ public class User extends AbstractEntity{
         this.username = username;
         this.firstName = firstName;
         this.email = email;
-        this.password = password;
+        this.pwHash = encoder.encode(password);
+    }
+
+    public String getPwHash() {
+        return pwHash;
+    }
+
+    public void setPwHash(String pwHash) {
+        this.pwHash = pwHash;
     }
 
     public String getUsername() {
@@ -50,11 +60,7 @@ public class User extends AbstractEntity{
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
     }
 }

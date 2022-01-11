@@ -19,7 +19,7 @@ public class RegistrationService {
         return registrationRepository.findByEmail(email);
     }
 
-    public User getUserByEmailAndPassword(String email, String password) {
-        return registrationRepository.findByEmailAndPassword(email, password);
+    public User getUserByEmailAndPassword(String email, String pwHash) {
+        return registrationRepository.findByEmailAndPwHash(email, pwHash);
     }
 }

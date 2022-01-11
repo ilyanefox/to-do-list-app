@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label>Password:</label>
-      <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.password" required #password="ngModel"
+      <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.pwHash" required #password="ngModel"
              [class.is-invalid]="password.invalid && password.touched">
       <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required</small>
     </div>

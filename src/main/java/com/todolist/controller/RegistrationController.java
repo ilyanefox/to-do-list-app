@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping("/ta-da-list")
 public class RegistrationController {
 
     @Autowired
     private RegistrationService registrationService;
 
-    @CrossOrigin(origins = "http://localhost:8080/register")
+    @CrossOrigin(origins = "http://localhost:8080/ta-da-list/register")
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) throws Exception{
         String tempEmail = user.getEmail();
@@ -30,7 +31,7 @@ public class RegistrationController {
     @PostMapping("/login")
     public User loginUser(@RequestBody User user) throws Exception{
         String tempEmail = user.getEmail();
-        String tempPass = user.getPassword();
+        String tempPass = user.getPwHash();
         User userObj = null;
         if (tempEmail != null && tempPass != null) {
           userObj = registrationService.getUserByEmailAndPassword(tempEmail, tempPass);
