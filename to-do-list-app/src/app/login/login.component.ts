@@ -14,26 +14,24 @@ export class LoginComponent implements OnInit {
 
   user = new User();
   msg = '';
-  constructor(private _service : RegistrationService, private _router : Router) { }
+
+  constructor(private _service: RegistrationService, private _router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
+  //Subscribe function defines how to obtain or generate values or messages to be published
   loginUser() {
     this._service.loginUserFromRemote(this.user).subscribe({
-      // next: console.log("response received");
       next: (response: User) => {
         console.log("response received")
         this._router.navigate(['/loginsuccess'])
       },
-      error:  (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         console.log("exception occurred");
-        this.msg="Please enter valid email and password"
+        this.msg = "Please enter valid email and password"
       }
-   });
+    });
   }
-
-  // goToRegistration() {
-  //   this._router.navigate(['/registration'])
-  // }
 }

@@ -10,6 +10,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 export class RegistrationComponent implements OnInit {
 
 user = new User;
@@ -20,19 +21,26 @@ msg = '';
   ngOnInit() {
   }
 
+  //Subscribe function defines how to obtain or generate values or messages to be published
   registerUser() {
     this._service.registerUserFromRemote(this.user).subscribe({
       next: (response: User) => {
       console.log("response received")
-        this._router.navigate(['/login']).then();
-        // this.msg="Registration successful";
+        this._router.navigate(['/profile']).then();
       },
       error:  (error: HttpErrorResponse) => {
-        this.msg=error.error;
-      console.log(this.msg);
-
+      console.log("User with this email already exists");
+        this.msg = "Uh oh! A user with this email already exists";
     }
   });
 
+    // getUserByFirstName(): void {
+    //   this._service.findUserByFirstName(this.user).subscribe({
+    //     next: (response: User) => {
+    //       this.user = response;
+    //
+    //     }
+    //   });
+    // }
   }
 }

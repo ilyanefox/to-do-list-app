@@ -18,5 +18,7 @@ export class RegistrationService {
     return this._http.post<any>("http://localhost:8080/ta-da-list/register", user)
   }
 
-
+  public findUserByFirstName(user : User): Observable<User> {
+    return this._http.post<User>("http://localhost:8080/ta-da-list/profile", user)
+  }
 }
