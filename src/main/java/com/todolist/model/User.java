@@ -3,45 +3,70 @@ package com.todolist.model;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class User extends AbstractEntity{
 
-    private String username;
-    private String firstName;
+//    private String username;
     private String email;
     private String pwHash;
+
+    private String firstName;
+
+    @OneToMany
+    private List<Category> categories = new ArrayList<Category>();
+
+    @OneToMany
+    private List<Task> toDoList = new ArrayList<Task>();
+
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//    @ManyToOne
-//    private List<String> categories = new ArrayList<String>();
 
     public User() {
     }
 
-    public User(String username, String firstName, String email, String password) {
-        this.username = username;
-        this.firstName = firstName;
+
+    public User(String email, String pwHash, String firstName, List<Category> categories, List<Task> toDoList) {
+//        this.username = username;
         this.email = email;
-        this.pwHash = encoder.encode(password);
+        this.pwHash = pwHash;
+        this.firstName = firstName;
+        this.categories = categories;
+        this.toDoList = toDoList;
+    }
+
+    public User(String firstName, List<Category> categories) {
+        this.firstName = firstName;
+        this.categories = categories;
+//        this.toDoList = toDoList;
     }
 
     public String getPwHash() {
         return pwHash;
     }
 
-    public void setPwHash(String pwHash) {
-        this.pwHash = pwHash;
+    public void setPwHash(String password) {
+        this.pwHash = encoder.encode(password);
     }
 
-    public String getUsername() {
-        return username;
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -52,15 +77,25 @@ public class User extends AbstractEntity{
         this.firstName = firstName;
     }
 
-    public String getEmail() {
-        return email;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
+
+    public List<Task> getToDoList() {
+        return toDoList;
+    }
+
+    public void setToDoList(List<Task> toDoList) {
+        this.toDoList = toDoList;
+    }
+
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
+
 }

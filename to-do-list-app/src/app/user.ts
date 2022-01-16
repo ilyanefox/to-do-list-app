@@ -10,9 +10,9 @@ export class User {
   // @ts-ignore
   firstName:string;
   // @ts-ignore
-  categories:string;
+  categories?:string;
   // @ts-ignore
-  toDoList:string;
+  toDoList?:string;
 
   constructor() {
   }

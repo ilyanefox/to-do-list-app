@@ -1,2 +1,5 @@
-package com.todolist.service;public class ListService {
+package com.todolist.service;
+
+public class ListService {
+
 }
