@@ -3,6 +3,7 @@ package com.todolist.service;
 import com.todolist.data.CategoryRepository;
 import com.todolist.data.RegistrationRepository;
 import com.todolist.model.Category;
+import com.todolist.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,13 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category addCategory(Category category) {
-        return categoryRepository.save(category);
+    public Category addCategory(Category categories) {
+        return categoryRepository.save(categories);
     }
 
+    public void deleteCategory(int id){
+        categoryRepository.deleteById(id);
+    }
 //    public User getUser(String firstName) {
 //        return registrationRepository.findByFirstName(firstName);
 //    }

@@ -52,21 +52,34 @@ public class RegistrationController {
         return userObj;
     }
 
-    @PostMapping("/categories")
-    public ResponseEntity<Category> addCategory(@RequestBody Category name, User user) throws Exception {
+    @PostMapping(path="/profile", produces = "text/plain", consumes= "text/html")
+//    public ResponseEntity<User> addCategory(@RequestBody Category category, User user) throws Exception {
         //need relationship between user and category
 
-        Category category = categoryService.addCategory(name);
-        List<Category> categories = new ArrayList<Category>();
-        categories.add(category);
+        public ResponseEntity<Category> addCategory(@RequestBody Category name, User user) throws Exception {
+            //need relationship between user and category
+
+            Category category = categoryService.addCategory(name);
+            List<Category> categories = new ArrayList<Category>();
+            categories.add(category);
 
 //        if (categories.contains(category) ) {
 //           throw new Exception(("Category already exists"));
 //       }
 
-        user.setCategories(categories);
-
+            user.setCategories(categories);
+//        List<Category> categoryObj = (List<Category>) categoryService.addCategory(category);
+//
+//
+//        user.setCategories(categoryObj);
+        registrationService.saveUser(user);
         return new ResponseEntity<>(category, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteCategory(int id) {
+        categoryService.deleteCategory(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/profile")
