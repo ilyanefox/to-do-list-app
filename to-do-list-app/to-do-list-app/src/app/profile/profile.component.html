@@ -1,0 +1,27 @@
+
+<div class="card text-center bg-light mb-3">
+  <div class="card-body">
+    <p>Hello!</p>
+    <form class="text-center border border-light p-5" action="#!" #categoryform="ngForm" (ngSubmit)="addCategory()" >
+          <!--#registerform="ngForm" (ngSubmit)="registerUser()">-->
+<mat-form-field class="example-chip-list" appearance="fill">
+  <mat-chip-list #chipList aria-label="Add Category">
+    <mat-chip *ngFor="let category of categoryArray" (removed)="remove(category)">
+      {{category.name}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input placeholder="Add category..."
+           name="category" [(ngModel)]="user.categories"
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)"
+           >
+  </mat-chip-list>
+</mat-form-field>
+      <button [disabled]="categoryform.form.invalid" type="submit" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

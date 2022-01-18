@@ -1,0 +1,32 @@
+
+<div class="card text-center bg-light mb-3">
+<!--<div class="card-border-light mb-4">-->
+  <div class="card-body">
+  <form #loginform="ngForm" (ngSubmit)="loginUser()">
+    <!--    class is from bootstrap -->
+    <h2>User Login</h2>
+    <small class="text-danger">{{msg}}</small>
+    <div class="form-outline mb-4">
+      <input type="email" class="form-control" placeholder="E-mail" name="email" [(ngModel)]="user.email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email="ngModel"
+             [class.is-invalid]="email.invalid && email.touched">
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Valid email is required</small>
+    </div>
+    <div class="form-outline mb-4">
+      <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.pwHash" required #password="ngModel"
+             [class.is-invalid]="password.invalid && password.touched">
+      <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required</small>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+<div>
+    <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Login</button>
+</div>
+
+
+<!--   -->
+<!--</div>-->
+  <!--  <small class="float-right" (click)="goToRegistration()">New user? Register here</small>-->
+  <small  [routerLink]="['/registration']">New user? Register here</small>
+
+
