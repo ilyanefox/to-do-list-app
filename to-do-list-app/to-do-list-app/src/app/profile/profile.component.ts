@@ -3,18 +3,13 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 
 import {Categories} from "../categories";
-import {MatIcon} from "@angular/material/icon";
-import { MatChipList} from "@angular/material/chips";
-import {User} from "../user";
-import {HttpErrorResponse} from "@angular/common/http";
+
 import {RegistrationService} from "../registration.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {ProfileService} from "../profile.service";
 import {FormGroup} from "@angular/forms";
 
-export interface Categories {
-  name: string;
-}
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -31,54 +26,22 @@ export class ProfileComponent implements OnInit {
   public categoryArray: Categories[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   // public user: User = new User();
-
   public msg = '';
   user = {
     id: '',
     email: '',
     pwHash: '',
     firstName: '',
-    categories: [],
+    categories: this.categoryArray,
     toDoList: []
   };
-  ngOnInit():any{
-    this.updateBookForm();
-  }
-  // constructor(private _service: RegistrationService, private profileService: ProfileService, private _router: Router) {
-  // }
-  constructor(
-    // public fb: FormBuilder,
-    private router: Router,
 
-    private actRoute: ActivatedRoute,
-
-  ) {
-    let id = this.actRoute.snapshot.paramMap.get('id');
-    this.profileService.GetStudent(id).subscribe(data => {
-      console.log(data.subjects)
-      this.subjectArray = data.subjects;
-      this.studentForm = this.fb.group({
-        student_name: [data.student_name, [Validators.required]],
-        student_email: [data.student_email, [Validators.required]],
-        section: [data.section, [Validators.required]],
-        subjects: [data.subjects],
-        dob: [data.dob, [Validators.required]],
-        gender: [data.gender]
-      })
-    })
+  constructor(private _service: RegistrationService, private profileService: ProfileService, private _router: Router) {
   }
 
-  updateBookForm() {
-    this.studentForm = this.fb.group({
-      student_name: ['', [Validators.required]],
-      student_email: ['', [Validators.required]],
-      section: ['', [Validators.required]],
-      subjects: [this.subjectArray],
-      dob: ['', [Validators.required]],
-      gender: ['Male']
-    })
-  }
+  ngOnInit(): void {
 
+  }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -112,22 +75,18 @@ export class ProfileComponent implements OnInit {
 // }
 
 
+  addCategory() {
+    // for (let category in this.categoryArray) {
 
-
-
-addCategory() {
-  for (let category in this.categoryArray) {
-
-    this.profileService.addCategory(this.).subscribe({
+    this.profileService.addCategory(this.categoryArray).subscribe({
       next: (response: Categories) => {
         console.log("response received")
-        // this._router.navigate(['/profile']).then();
+        this._router.navigate(['/login']).then();
       },
       // error: (error: HttpErrorResponse) => {
       //   console.log("Category already exists");
       //   this.msg = "Uh oh! Category already exists";
       // }
     });
-  }
   }
 }

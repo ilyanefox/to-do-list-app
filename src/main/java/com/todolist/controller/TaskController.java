@@ -19,14 +19,14 @@ import java.util.List;
         }
 
         @GetMapping("/all")
-        public ResponseEntity<List<Task>> getAllEmployees () {
-            List<Task> employees = taskService.findAllTasks();
+        public ResponseEntity<List<Task>> getAllTasks () {
+            List<Task> tasks = taskService.findAllTasks();
             return new ResponseEntity<>(tasks, HttpStatus.OK);
         }
 
-        @GetMapping("/find/{id}")
-        public ResponseEntity<Task> getEmployeeById (@PathVariable("id") Long id) {
-            Task task = taskService.findTaskById(id);
+        @GetMapping("/find/{category}")
+        public ResponseEntity<Task> getTaskByCategory (@PathVariable("category") String category) {
+            Task task = taskService.findTaskByCategory(category);
             return new ResponseEntity<>(task, HttpStatus.OK);
         }
 
@@ -37,13 +37,14 @@ import java.util.List;
         }
 
         @PutMapping("/update")
-        public ResponseEntity<Task> updateEmployee(@RequestBody Task task) {
+        public ResponseEntity<Task> updateTask(@RequestBody Task task) {
             Task updateTask = taskService.updateTask(task);
             return new ResponseEntity<>(updateTask, HttpStatus.OK);
         }
 
+//        how to select task to be deleted?
         @DeleteMapping("/delete/{id}")
-        public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
+        public ResponseEntity<?> deleteTask(@PathVariable("id") int id) {
             taskService.deleteTask(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }

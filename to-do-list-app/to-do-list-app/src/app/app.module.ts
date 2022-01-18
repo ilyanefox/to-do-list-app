@@ -19,12 +19,13 @@ import {FormsModule} from "@angular/forms";
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

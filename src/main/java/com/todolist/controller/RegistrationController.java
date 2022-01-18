@@ -53,10 +53,7 @@ public class RegistrationController {
     }
 
     @PostMapping(path="/profile", produces = "text/plain", consumes= "text/html")
-//    public ResponseEntity<User> addCategory(@RequestBody Category category, User user) throws Exception {
-        //need relationship between user and category
-
-        public ResponseEntity<Category> addCategory(@RequestBody Category name, User user) throws Exception {
+        public ResponseEntity<User> addCategory(@RequestBody Category name, User user) throws Exception {
             //need relationship between user and category
 
             Category category = categoryService.addCategory(name);
@@ -73,7 +70,7 @@ public class RegistrationController {
 //
 //        user.setCategories(categoryObj);
         registrationService.saveUser(user);
-        return new ResponseEntity<>(category, HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete")

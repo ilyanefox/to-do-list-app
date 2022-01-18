@@ -19,7 +19,7 @@ export class ProfileService {
     return this._http.get<Categories[]>("http://localhost:8080/ta-da-list/user/profile")
   }
 
-  public addCategory(category: string): Observable<any> {
+  public addCategory(category: Categories[]): Observable<any> {
     return this._http.post<any>("http://localhost:8080/ta-da-list/profile", category)
   }
 }
