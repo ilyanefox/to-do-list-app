@@ -16,6 +16,8 @@ import {MatInputModule} from "@angular/material/input";
 import { MatButtonModule } from '@angular/material/button';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormsModule} from "@angular/forms";
+import { TaskListComponent } from './task-list/task-list.component';
+import { AddTaskComponent } from './task-list/add-task/add-task.component';
 
 
 
@@ -26,6 +28,8 @@ import {FormsModule} from "@angular/forms";
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,
+    TaskListComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,7 @@ import {FormsModule} from "@angular/forms";
     MatChipsModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   providers: [{
     provide: MAT_CHIPS_DEFAULT_OPTIONS,

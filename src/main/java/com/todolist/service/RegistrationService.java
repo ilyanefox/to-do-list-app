@@ -31,9 +31,15 @@ public class RegistrationService {
     }
 
     public User getUserByEmailAndPassword(String email, String pwHash) {
-        return registrationRepository.findByEmailAndPwHash(email, pwHash);
+        User user = registrationRepository.findByEmailAndPwHash(email, pwHash);
+//        return registrationRepository.findByEmailAndPwHash(email, pwHash);
+        return user;
     }
 
+    public List<User> getUsers() {
+        return registrationRepository.findAll();
+    }
+//    public User getUserById
 //    public User findCategories(User categories) {
 //        return registrationRepository.find();
 //    };

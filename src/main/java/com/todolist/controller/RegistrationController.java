@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,14 +36,16 @@ public class RegistrationController {
         return registrationService.saveUser(user);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:8080/ta-da-list/login")
     @PostMapping("/login")
     public User loginUser(@RequestBody User user) throws Exception {
         String tempEmail = user.getEmail();
-        String tempPass = user.getPwHash();
+//        String tempPass = user.getPwHash();
         User userObj = null;
-        if (tempEmail != null && tempPass != null) {
-            userObj = registrationService.getUserByEmailAndPassword(tempEmail, tempPass);
+//        if (tempEmail != null && tempPass != null) {
+        if (tempEmail != null) {
+//            userObj = registrationService.getUserByEmailAndPassword(tempEmail, tempPass);
+            userObj = registrationService.getUserByEmail(tempEmail);
         }
         if (userObj == null) {
             throw new Exception(("User does not exist"));
@@ -86,6 +87,12 @@ public class RegistrationController {
 //        User userObj = categoryService.getCategories();
         user.setCategories(categories);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<User>> getUsers(){
+        List<User> users = registrationService.getUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
 }

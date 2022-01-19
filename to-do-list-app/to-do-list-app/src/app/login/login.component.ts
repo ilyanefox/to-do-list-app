@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
     this._service.loginUserFromRemote(this.user).subscribe({
       next: (response: User) => {
         console.log("response received")
-        this._router.navigate(['/loginsuccess'])
+        this._router.navigate(['/add-task'])
       },
       error: (error: HttpErrorResponse) => {
-        console.log("exception occurred");
+        console.log(error.error);
         this.msg = "Please enter valid email and password"
       }
     });

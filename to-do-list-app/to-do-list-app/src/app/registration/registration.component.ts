@@ -19,7 +19,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private _service: RegistrationService, private _router: Router) {
   }
-  user = new User;
+
+  user: User = new User();
   msg = '';
   ngOnInit() {
   }
@@ -29,7 +30,7 @@ export class RegistrationComponent implements OnInit {
     this._service.registerUserFromRemote(this.user).subscribe({
       next: (response: User) => {
         console.log("response received")
-        this._router.navigate(['/profile']).then();
+        this._router.navigate(['/login']).then();
       },
       error: (error: HttpErrorResponse) => {
         console.log("User with this email already exists");

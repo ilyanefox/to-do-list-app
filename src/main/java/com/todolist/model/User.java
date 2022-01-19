@@ -4,7 +4,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,6 @@ public class User extends AbstractEntity{
 
 
     public User(String email, String pwHash, String firstName, List<Category> categories, List<Task> toDoList) {
-//        this.username = username;
         this.email = email;
         this.pwHash = pwHash;
         this.firstName = firstName;

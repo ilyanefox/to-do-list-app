@@ -1,8 +1,14 @@
 export class User {
-  id: number | undefined;
-  email: string | undefined;
-  pwHash: string | undefined;
-  firstName: string | undefined;
-  categories: string[] | undefined;
-  toDoList: string | undefined;
+  // @ts-ignore
+  id: number
+  // @ts-ignore
+  email: string
+  // @ts-ignore
+  pwHash: string
+  // @ts-ignore
+  firstName: string
+  // @ts-ignore
+  categories: string[]
+  // @ts-ignore
+  toDoList: string
 }
