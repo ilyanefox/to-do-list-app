@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class TaskService {
@@ -35,9 +34,9 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task findTaskByCategory(Category category) {
-
-        return taskRepository.findTaskByCategory(category);
+    public Task findTaskByCategoryName(String name) {
+//        Task task = taskRepository.findTaskByCategoryName(name);
+        return taskRepository.findTaskByCategoryName(name);
     }
 
     public void deleteTask(int id){

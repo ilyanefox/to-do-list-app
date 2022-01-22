@@ -8,7 +8,8 @@ import {Task} from "./task";
 })
 export class TaskService {
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient) {
+  }
 
   public addTask(task: Task): Observable<Task> {
     return this.http.post<any>("http://localhost:8080/task/add", task);
@@ -16,5 +17,9 @@ export class TaskService {
 
   public getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>("http://localhost:8080/task/list")
+  }
+
+  public getTaskByCategory(): Observable<Task[]> {
+    return this.http.get<Task[]>("http://localhost:8080/task/list/{category}")
   }
 }

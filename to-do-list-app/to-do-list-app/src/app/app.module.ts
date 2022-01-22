@@ -18,6 +18,7 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormsModule} from "@angular/forms";
 import { TaskListComponent } from './task-list/task-list.component';
 import { AddTaskComponent } from './task-list/add-task/add-task.component';
+import { ListCategoryComponent } from './task-list/list-category/list-category.component';
 
 
 
@@ -29,7 +30,8 @@ import { AddTaskComponent } from './task-list/add-task/add-task.component';
     RegistrationComponent,
     ProfileComponent,
     TaskListComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    ListCategoryComponent
   ],
   imports: [
     BrowserModule,

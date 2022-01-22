@@ -24,15 +24,16 @@ import java.util.List;
 //
 //        Not retrieving task list
         @GetMapping("/list")
-        public ResponseEntity<List<Task>> getAllTasks () {
+        public ResponseEntity<List<Task>> getAllTasks() {
             List<Task> tasks = taskService.findAllTasks();
             return new ResponseEntity<>(tasks, HttpStatus.OK);
         }
 //      Not done yet
-        @GetMapping("/find/{category}")
-        public ResponseEntity<Task> getTaskByCategory (@PathVariable("category") Category category) {
-            Task task = taskService.findTaskByCategory(category);
-            return new ResponseEntity<>(task, HttpStatus.OK);
+        @GetMapping("/list/{category}")
+        public ResponseEntity<Task> getTaskByCategory(@PathVariable("category") Category category, Task task) {
+            String categoryName = String.valueOf(category.getName());
+            Task getTask = taskService.findTaskByCategoryName(categoryName);
+            return new ResponseEntity<>(getTask, HttpStatus.OK);
         }
 
         @PostMapping("/add")
