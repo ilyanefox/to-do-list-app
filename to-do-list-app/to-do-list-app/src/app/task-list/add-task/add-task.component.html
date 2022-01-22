@@ -1,0 +1,35 @@
+<p>add-task works!</p>
+<div class="card text-center bg-light mb-3">
+  <div class="card-body">
+    <form class="text-center border border-light p-5" action="#!" #taskform="ngForm" (ngSubmit)="addTask()">
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Task" name="taskName" [(ngModel)]="task.name" #taskName="ngModel" required>
+<!--         [class.is-invalid]="taskName.invalid && taskName.touched">-->
+<!--  <small class="text-danger" [class.d-none]="taskName.valid || taskName.untouched">Hi! Task is required</small>-->
+</div>
+
+<div class="form-group">
+  <label>Add a category</label>
+  <input type="text" class="form-control" placeholder="Ex: Work, School..." name="category" [(ngModel)]="task.category" required #category="ngModel">
+<!--         [class.is-invalid]="category.invalid && category.touched">-->
+<!--  <small class="text-danger" [class.d-none]="category.valid || category.untouched">Hi! Category is required</small>-->
+</div>
+      <button [disabled]="taskform.form.invalid" type="submit" class="btn btn-info">Add Task</button>
+    </form>
+  </div>
+</div>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Task</mat-label>
+    <input matInput placeholder="Placeholder">
+  </mat-form-field>
+</p>
+<!--<p>-->
+<!--  <mat-form-field appearance="outline">-->
+<!--    <mat-label>Outline form field</mat-label>-->
+<!--    <input matInput placeholder="Placeholder">-->
+<!--    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+<!--    <mat-hint>Hint</mat-hint>-->
+<!--  </mat-form-field>-->
+<!--</p>-->
