@@ -15,16 +15,18 @@
 <!--  <small class="text-danger" [class.d-none]="category.valid || category.untouched">Hi! Category is required</small>-->
 </div>
       <button [disabled]="taskform.form.invalid" type="submit" class="btn btn-info">Add Task</button>
+      <br>
+      <button type="submit" class="btn btn-info" [routerLink]="['/task-list']">To-Do List</button>
     </form>
   </div>
 </div>
 
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Task</mat-label>
-    <input matInput placeholder="Placeholder">
-  </mat-form-field>
-</p>
+<!--<p>-->
+<!--  <mat-form-field appearance="outline">-->
+<!--    <mat-label>Task</mat-label>-->
+<!--    <input matInput placeholder="Placeholder">-->
+<!--  </mat-form-field>-->
+<!--</p>-->
 <!--<p>-->
 <!--  <mat-form-field appearance="outline">-->
 <!--    <mat-label>Outline form field</mat-label>-->

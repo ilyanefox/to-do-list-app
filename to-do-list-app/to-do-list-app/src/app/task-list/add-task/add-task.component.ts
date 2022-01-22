@@ -21,6 +21,7 @@ export class AddTaskComponent implements OnInit {
     this.addTask();
   }
   public task: any = new Task();
+
   // public category: any = new Category();
 
   public addTask(): any {
@@ -39,15 +40,4 @@ export class AddTaskComponent implements OnInit {
     });
   }
 }
-// registerUser() {
-//   this._service.registerUserFromRemote(this.user).subscribe({
-//     next: (response: User) => {
-//       console.log("response received")
-//       this._router.navigate(['/add']).then();
-//     },
-//     error: (error: HttpErrorResponse) => {
-//       console.log("User with this email already exists");
-//       this.msg = "Uh oh! A user with this email already exists";
-//     }
-//   });
-// }
+

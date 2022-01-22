@@ -4,5 +4,5 @@ export class Task {
   // @ts-ignore
   name: string
   // @ts-ignore
-  category: any[]
+  category: string
 }

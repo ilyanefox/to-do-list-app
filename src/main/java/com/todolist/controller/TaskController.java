@@ -28,32 +28,23 @@ import java.util.List;
             List<Task> tasks = taskService.findAllTasks();
             return new ResponseEntity<>(tasks, HttpStatus.OK);
         }
-
+//      Not done yet
         @GetMapping("/find/{category}")
         public ResponseEntity<Task> getTaskByCategory (@PathVariable("category") Category category) {
             Task task = taskService.findTaskByCategory(category);
             return new ResponseEntity<>(task, HttpStatus.OK);
         }
 
-//        Not saving the category name to the category object
         @PostMapping("/add")
         public ResponseEntity<Task> addTask(@RequestBody Task newTask, Category newCategory, String name) {
 
-//            newCategory.getName();
-
             Task addTask = taskService.addTask(newTask);
-//            newCategory.setName(name);
-//            String categoryName = String.valueOf(newTask.getCategory());
-
-//            newCategory.setName(categoryName);
             Category categoryObj = addTask.getCategory();
-//            Category categoryObj = categoryService.addCategory(newCategory);
-//            newTask.setCategory(name);
-            categoryService.addCategory(categoryObj);
-            System.out.println(categoryObj);
+            // do I need this?
+//            categoryService.addCategory(categoryObj);
             return new ResponseEntity<>(addTask, HttpStatus.CREATED);
         }
-
+//      Not done yet
         @PutMapping("/update")
         public ResponseEntity<Task> updateTask(@RequestBody Task task) {
             Task updateTask = taskService.updateTask(task);

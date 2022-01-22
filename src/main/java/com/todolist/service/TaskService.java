@@ -36,6 +36,7 @@ public class TaskService {
     }
 
     public Task findTaskByCategory(Category category) {
+
         return taskRepository.findTaskByCategory(category);
     }
 
