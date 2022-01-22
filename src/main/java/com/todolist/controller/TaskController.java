@@ -37,14 +37,21 @@ import java.util.List;
 
 //        Not saving the category name to the category object
         @PostMapping("/add")
-        public ResponseEntity<Task> addTask(@RequestBody Task newTask, Category newCategory) {
+        public ResponseEntity<Task> addTask(@RequestBody Task newTask, Category newCategory, String name) {
 
-            Category categoryObj = categoryService.addCategory(newCategory);
-//            newCategory.setName(categoryName);
-            newTask.setCategory(categoryObj);
+//            newCategory.getName();
+
             Task addTask = taskService.addTask(newTask);
+//            newCategory.setName(name);
+//            String categoryName = String.valueOf(newTask.getCategory());
 
-            return new ResponseEntity<>(newTask, HttpStatus.CREATED);
+//            newCategory.setName(categoryName);
+            Category categoryObj = addTask.getCategory();
+//            Category categoryObj = categoryService.addCategory(newCategory);
+//            newTask.setCategory(name);
+            categoryService.addCategory(categoryObj);
+            System.out.println(categoryObj);
+            return new ResponseEntity<>(addTask, HttpStatus.CREATED);
         }
 
         @PutMapping("/update")

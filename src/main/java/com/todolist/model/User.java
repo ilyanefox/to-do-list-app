@@ -1,7 +1,9 @@
 package com.todolist.model;
 
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -16,11 +18,11 @@ public class User extends AbstractEntity{
 
     private String firstName;
 
-    @OneToMany
-    private List<Category> categories = new ArrayList<Category>();
+//    @OneToMany
+//    private List<Category> categories = new ArrayList<Category>();
 
-    @OneToMany
-    private List<Task> toDoList = new ArrayList<Task>();
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Task> toDoList = new ArrayList<Task>();
 
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -33,13 +35,13 @@ public class User extends AbstractEntity{
         this.email = email;
         this.pwHash = pwHash;
         this.firstName = firstName;
-        this.categories = categories;
-        this.toDoList = toDoList;
+//        this.categories = categories;
+//        this.toDoList = toDoList;
     }
 
     public User(String firstName, List<Category> categories) {
         this.firstName = firstName;
-        this.categories = categories;
+//        this.categories = categories;
 //        this.toDoList = toDoList;
     }
 
@@ -75,21 +77,21 @@ public class User extends AbstractEntity{
         this.firstName = firstName;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
+//    public List<Category> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(List<Category> categories) {
+//        this.categories = categories;
+//    }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
-    public List<Task> getToDoList() {
-        return toDoList;
-    }
-
-    public void setToDoList(List<Task> toDoList) {
-        this.toDoList = toDoList;
-    }
+//    public List<Task> getToDoList() {
+//        return toDoList;
+//    }
+//
+//    public void setToDoList(List<Task> toDoList) {
+//        this.toDoList = toDoList;
+//    }
 
 
     public boolean isMatchingPassword(String password) {

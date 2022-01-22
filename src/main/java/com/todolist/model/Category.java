@@ -10,7 +10,6 @@ public class Category extends AbstractEntity{
 
  private String name;
 
-
     public Category() {
     }
 

@@ -1,14 +1,20 @@
 package com.todolist.model;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import org.hibernate.annotations.Cascade;
+
+
+import javax.persistence.*;
 
 @Entity
 public class Task extends AbstractEntity{
 
     private String name;
 
-    @ManyToOne
+//    @ManyToOne
+//    @Cascade(CascadeType.SAVE_UPDATE)
+//    @JoinColumn(name = "category_id")
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
     public Task() {

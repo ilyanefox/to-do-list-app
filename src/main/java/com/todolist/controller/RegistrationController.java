@@ -53,26 +53,26 @@ public class RegistrationController {
         return userObj;
     }
 
-    @PostMapping(path="/profile", produces = "text/plain", consumes= "text/html")
-        public ResponseEntity<User> addCategory(@RequestBody Category name, User user) throws Exception {
-            //need relationship between user and category
-
-            Category category = categoryService.addCategory(name);
-            List<Category> categories = new ArrayList<Category>();
-            categories.add(category);
-
-//        if (categories.contains(category) ) {
-//           throw new Exception(("Category already exists"));
-//       }
-
-            user.setCategories(categories);
-//        List<Category> categoryObj = (List<Category>) categoryService.addCategory(category);
+//    @PostMapping(path="/profile", produces = "text/plain", consumes= "text/html")
+//        public ResponseEntity<User> addCategory(@RequestBody Category name, User user) throws Exception {
+//            //need relationship between user and category
 //
+//            Category category = categoryService.addCategory(name);
+//            List<Category> categories = new ArrayList<Category>();
+//            categories.add(category);
 //
-//        user.setCategories(categoryObj);
-        registrationService.saveUser(user);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
-    }
+////        if (categories.contains(category) ) {
+////           throw new Exception(("Category already exists"));
+////       }
+//
+//            user.setCategories(categories);
+////        List<Category> categoryObj = (List<Category>) categoryService.addCategory(category);
+////
+////
+////        user.setCategories(categoryObj);
+//        registrationService.saveUser(user);
+//        return new ResponseEntity<>(user, HttpStatus.CREATED);
+//    }
 
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteCategory(int id) {
@@ -80,14 +80,14 @@ public class RegistrationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/profile")
-    public ResponseEntity<User> getUserCategories(User user, Category categoryList) {
-
-        List<Category> categories = categoryService.getCategories();
-//        User userObj = categoryService.getCategories();
-        user.setCategories(categories);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+//    @GetMapping("/profile")
+//    public ResponseEntity<User> getUserCategories(User user, Category categoryList) {
+//
+//        List<Category> categories = categoryService.getCategories();
+////        User userObj = categoryService.getCategories();
+//        user.setCategories(categories);
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
 
     @GetMapping("/all")
     public ResponseEntity<List<User>> getUsers(){
