@@ -10,7 +10,17 @@ import {Task} from "../task";
 })
 export class TaskListComponent implements OnInit {
 
-  public tasks: Task[] = [];
+  // public tasks: Task[] = [];
+  public tasks: Task[] = [{
+    "id": '',
+    "name": '',
+    "category": {
+      "id": '',
+      "name": ''
+    }
+  }];
+
+
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {

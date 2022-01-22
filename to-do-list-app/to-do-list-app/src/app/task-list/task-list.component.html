@@ -1,13 +1,14 @@
-<p>task-list works!</p>
-
 <div class="container">
   <div class="row">
-    <div *ngFor="let task of tasks" class="col-md-6 col-xl-3">
+    <div *ngFor="let task of tasks" >
       <div class="card m-b-30">
         <div class="card-body row">
-          <div class="col-6 card-title align-self-center mb-0">
+          <div >
             <h5>{{task.name}}</h5>
-            <p>{{task.category}}</p>
+            <p>
+              {{task.category.name}}
+<!--            <span *ngFor="let category of tasks">{{category.name}}</span>-->
+            </p>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 export class Task {
   // @ts-ignore
-  id: number
+  id: any
   // @ts-ignore
   name: string
   // @ts-ignore
-  category: string
+  category: any
 }
